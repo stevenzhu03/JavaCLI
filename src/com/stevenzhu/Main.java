@@ -19,7 +19,13 @@ public class Main {
         float annualInterest = scanner.nextFloat();
         float monthlyInterest = annualInterest / MONTHS_IN_YEAR / PERCENT;
 
-        System.out.print("Period(Years: ");
+        System.out.print("Period (Years): ");
+        byte years = scanner.nextByte();
+        int numberOfPayments = years * MONTHS_IN_YEAR;
 
+        double mortage = principle * (monthlyInterest * Math.pow(1+monthlyInterest, numberOfPayments)) / (Math.pow(1+monthlyInterest, numberOfPayments) -1);
+
+        String formattedMortage = NumberFormat.getCurrencyInstance().format(mortage);
+        System.out.println("Mortgage: " + formattedMortage);
     }
 }
