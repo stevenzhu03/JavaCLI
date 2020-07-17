@@ -1,7 +1,6 @@
 package com.stevenzhu;
 
 import java.text.NumberFormat;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -13,6 +12,11 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Principle: ");
+        while(!scanner.hasNextInt()){
+            System.out.println("This is not a number");
+            System.out.print("Please enter your principle: ");
+            scanner.next();
+        }
         int principle = scanner.nextInt();
 
         System.out.print("Annual Interest Rate: ");
@@ -23,9 +27,10 @@ public class Main {
         byte years = scanner.nextByte();
         int numberOfPayments = years * MONTHS_IN_YEAR;
 
-        double mortage = principle * (monthlyInterest * Math.pow(1+monthlyInterest, numberOfPayments)) / (Math.pow(1+monthlyInterest, numberOfPayments) -1);
+        double mortgage = principle * (monthlyInterest * Math.pow(1+monthlyInterest, numberOfPayments)) / (Math.pow(1+monthlyInterest, numberOfPayments) -1);
 
-        String formattedMortage = NumberFormat.getCurrencyInstance().format(mortage);
-        System.out.println("Mortgage: " + formattedMortage);
+        String formattedMortgage = NumberFormat.getCurrencyInstance().format(mortgage);
+        System.out.println("Mortgage: " + formattedMortgage);
+        System.out.println("Mortgage: " + formattedMortgage);
     }
 }
