@@ -14,15 +14,6 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
-            System.out.print("Principle: ");
-            principle = scanner.nextInt();
-
-            if(principle > 1000 && principle <= 1_000_000)
-                break;
-            System.out.println("Enter a principle amount between 100 and 1,000,000");
-        }
-
-        while (true) {
             System.out.print("Annual Interest Rate: ");
 
             annualInterest = scanner.nextFloat();
@@ -43,6 +34,21 @@ public class Main {
 
         String formattedMortgage = NumberFormat.getCurrencyInstance().format(mortgage);
         System.out.println("Mortgage: " + formattedMortgage);
+    }
+
+    public static double readNumbers(String prompt, double min, double max) {
+        Scanner scanner = new Scanner(System.in);
+        double value;
+        while (true) {
+            System.out.print("Principle: ");
+            value = scanner.nextFloat();
+
+            if(value > min && value <= max)
+                break;
+            System.out.println("Enter a value amount between" + min + "and" + max);
+        }
+
+        return value;
     }
 
     public static double calculateMortage(
