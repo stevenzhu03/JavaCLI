@@ -13,14 +13,33 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
-        principle = (int) readNumbers("Principal", 1000, 1_000_000);
+        principle = (int) readNumbers("Principal: ", 1000, 1_000_000);
         annualInterest = (float) readNumbers("Annual Interest Rate: ", 1, 30);
-        years = (byte) readNumbers("Pay Period", 1 ,30);
+        years = (byte) readNumbers("Pay Period: ", 1 ,30);
 
         double mortgage = calculateMortage(principle, annualInterest, years);
 
         String formattedMortgage = NumberFormat.getCurrencyInstance().format(mortgage);
         System.out.println("Mortgage: " + formattedMortgage);
+    }
+
+    public static double calculateBalance (
+            int principle,
+            float annualInterest,
+            byte years,
+            short numberOfPaymentsMade
+    ) {
+
+        final byte PERCENT = 100;
+        final byte MONTHS_IN_YEAR = 12;
+
+        float monthlyInterest = annualInterest / MONTHS_IN_YEAR / PERCENT;
+        short numberOfPayments = (short)(years * MONTHS_IN_YEAR);
+
+        double bala nce = principle
+                            * (Math.pow(1 + monthlyInterest, numberOfPayments) - Math.pow(1+ monthlyInterest, numberOfPaymentsMade))
+                            / (Math.pow(1 + monthlyInterest, numberOfPayments));
+        
     }
 
     public static double readNumbers(String prompt, double min, double max) {
@@ -32,7 +51,7 @@ public class Main {
 
             if(value > min && value <= max)
                 break;
-            System.out.println("Enter a value amount between" + min + "and" + max);
+            System.out.println("Enter a value amount between " + min + " and " + max);
         }
 
         return value;
