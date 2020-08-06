@@ -13,22 +13,9 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
-        while (true) {
-            System.out.print("Annual Interest Rate: ");
-
-            annualInterest = scanner.nextFloat();
-            if (annualInterest > 1 && annualInterest <= 30)
-                break;
-            System.out.println("Please enter an annual interest rate between 1 and 30.");
-        }
-
-        while (true) {
-            System.out.print("Period (Years): ");
-            years = scanner.nextByte();
-            if (years > 1 && years <= 30)
-                break;
-            System.out.println("Please enter a period between 1 and 30.");
-        }
+        principle = (int) readNumbers("Principal", 1000, 1_000_000);
+        annualInterest = (float) readNumbers("Annual Interest Rate: ", 1, 30);
+        years = (byte) readNumbers("Pay Period", 1 ,30);
 
         double mortgage = calculateMortage(principle, annualInterest, years);
 
@@ -40,7 +27,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         double value;
         while (true) {
-            System.out.print("Principle: ");
+            System.out.print(prompt);
             value = scanner.nextFloat();
 
             if(value > min && value <= max)
