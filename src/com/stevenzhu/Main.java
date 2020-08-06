@@ -9,15 +9,19 @@ public class Main {
         final byte PERCENT = 100;
         final byte MONTHS_IN_YEAR = 12;
 
+
+        int principle = 0;
+
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Principle: ");
-        while(!scanner.hasNextInt()){
-            System.out.println("This is not a number");
-            System.out.print("Please enter your principle: ");
-            scanner.next();
+        while(true) {
+            System.out.print("Principle: ");
+            principle = scanner.nextInt();
+
+            if(principle > 1000 && principle <= 1_000_000)
+                break;
+            System.out.println("Enter a principle amount between 100 and 1,000,000");
         }
-        int principle = scanner.nextInt();
 
         System.out.print("Annual Interest Rate: ");
         float annualInterest = scanner.nextFloat();
