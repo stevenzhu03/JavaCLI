@@ -1,5 +1,6 @@
 package com.stevenzhu;
 
+//calculations for mortgage
 public class MortgageCalculator {
 
   public static double calculateBalance(

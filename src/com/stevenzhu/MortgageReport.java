@@ -2,6 +2,7 @@ package com.stevenzhu;
 
 import java.text.NumberFormat;
 
+//reporting related to mortgage
 public class MortgageReport {
 
   static void printMortgage(int principal, float annualInterest, byte years) {
